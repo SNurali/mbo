@@ -135,7 +135,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #ffffff;
+		background: #fdfdfd;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -2891,8 +2891,8 @@ input, select, textarea {
 
 				#header .logo .symbol img {
 					display: block;
-					width: 2em;
-					height: 2em;
+					width: 10em;
+					height: 10em;
 				}
 
 		#header nav {
@@ -3364,3 +3364,6 @@ input, select, textarea {
 
 		}
 
+select option {
+    background: rgba(38, 31, 31, 0.52); /* Замените #f1f1f1 на цвет вашего выбора */
+}

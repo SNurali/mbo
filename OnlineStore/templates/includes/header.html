@@ -3,7 +3,10 @@
     <div class="inner">
         <!-- Logo -->
         <a href="{% url 'store:home' %}" class="logo">
-            <span class="symbol"><img src="{% static "images/logo.svg" %}" alt="" /></span><span class="title">OnlineStore</span>
+            <span class="symbol"><img src="{% static "images/logo.svg" %}" alt="" /></span><span class="title">Добро пожаловать GM ONLINE MARKET автозапчасти.</span>
+            {% if request.user.get_username %}
+                <span class="greeting">Привет, {{ request.user.get_username }}!</span>
+            {% endif %}
         </a>
         <!-- Nav -->
         <nav>
@@ -24,10 +27,28 @@
     </div>
 </header>
 <!-- Menu -->
+<!-- Menu -->
 <nav id="menu">
     <h2>Меню</h2>
     <ul>
         <li><a href="{% url 'store:tag_list' %}">Все категории</a></li>
+        <!-- Display categories here -->
+        <form method="GET" action="/tag_details_redirect/">
+            <select name="slug" onchange="this.form.submit()">
+              <option value="select-category" disabled selected>Выберите категорию</option>
+              {% for category in categories %}
+                <option value="{{ category.slug }}">{{ category.name }}</option>
+              {% endfor %}
+            </select>
+        </form>
+        <!-- End of categories -->
+        {% if request.user.get_username %}
+            <li><a href="{% url 'users:logout' %}">выход из акаунта</a></li>
+        {% else %}
+            <li><a href="{% url 'users:login' %}">вход в акаунт</a></li>
+            <li><a href="{% url 'users:signup' %}">Регистрация</a></li>
+        {% endif %}
+        <li><a href="{% url 'store:search_results' %}">Поиск</a></li>
         <li><a href="{% url 'about:about_project' %}">О проекте</a></li>
         <li><a href="{% url 'about:about_me' %}">Обо мне</a></li>
     </ul>

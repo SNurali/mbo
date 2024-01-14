@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if items %}
+    <h2>Результаты поиска</h2>
+    <p>Вы искали "{{ query }}"</p>
+    <ul>
+      {% for item in items %}
+        <li><a href="{% url 'store:item_detail' item.id %}">{{ item.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>По запросу "{{ query }}" ничего не найдено.</p>
+  {% endif %}
+{% endblock %}

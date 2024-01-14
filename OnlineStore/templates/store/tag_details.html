@@ -2,6 +2,7 @@
 
 {% block content %}
 {% load static %}
+
     <h2>{{ tag.name }}</h2>
     Количество товаров:&ensp;{{ tag.items.count }}
     <p><a href="{% url 'store:tag_list'%}"><b>Все категории</b></a></p>
@@ -20,10 +21,10 @@
     </p>
     <p>{{ item.description }}</p>
     {% if item.old_price %}
-        <p>Старая цена: <s>{{ item.old_price }} рублей</s>
-        Новая цена: <b>{{ item.price }}</b> рублей </p>
+        <p>Старая цена: <s>{{ item.old_price }} сум</s>
+        Новая цена: <b>{{ item.price }}</b> сум </p>
     {% else %}
-        <p>Цена: <b>{{ item.price }}</b> рублей </p>
+        <p>Цена: <b>{{ item.price }}</b> сум </p>
     {% endif %}
     {% if not forloop.last %}<hr>{% endif %}
 {% endfor %}

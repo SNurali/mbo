@@ -38,13 +38,13 @@ class Item(models.Model):
     )
     pub_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления',)
     price = models.DecimalField(
-        max_digits=8,
-        decimal_places=2,
+        max_digits=20,
+        decimal_places=0,
         verbose_name='Новая цена',
     )
     old_price = models.DecimalField(
-        max_digits=8,
-        decimal_places=2,
+        max_digits=20,
+        decimal_places=0,
         verbose_name='Старая цена',
         blank=True,
         null=True,

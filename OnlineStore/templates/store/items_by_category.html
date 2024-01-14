@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<h2 style="animation: forwards">Выберите категорию которая вас инетересует.</h2>
+<form method="get" action="{% url 'store:tag_details_redirect' %}">
+    <select name="slug" onchange="this.form.submit()">
+        {% for tag in tags %}
+            {% if request.GET.slug == tag.slug %}
+                <option value="{{ tag.slug }}" selected>{{ tag.name }}</option>
+            {% else %}
+                <option value="{{ tag.slug }}">{{ tag.name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</form>
+{% endblock %}

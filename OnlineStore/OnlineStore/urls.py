@@ -3,12 +3,17 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+from search import views
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cart/', include('cart.urls')),
     path('about/', include('about.urls')),
     path('checkout/', include('checkout.urls')),
     path('users/', include('users.urls')),
+    path('search/', views.search, name='search'),
     path('', include('store.urls')),
     path('', include('django.contrib.auth.urls'))
 ]
